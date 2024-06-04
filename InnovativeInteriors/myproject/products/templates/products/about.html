@@ -1,0 +1,148 @@
+
+{% extends 'products/basic.html' %}
+{% block css %}
+
+body {
+    background-color: #f2f2f2; /* Grey background color */
+}
+.navbar{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    font-size: 20px;
+    background-color: darkgrey;
+    color: white;
+}
+footer.navbar {
+    padding: 20px 0; /* Adjust padding as needed */
+}
+
+footer.navbar-brand {
+    font-size: 24px;
+    margin-right: auto;
+}
+
+
+footer.navbar-nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 0;
+    margin-right: auto;
+   }
+
+footer.navbar-nav .nav-item {
+    margin-right: 30px; /* Adjust spacing between links */
+
+}
+.nav-link {
+    margin-right: 0px; /* Adjust the value as needed */
+    font-size: 19px;
+}
+
+footer.navbar-nav .nav-link a{
+    padding-top: 0.5rem; /* Adjust vertical padding */
+    padding-bottom: 0.5rem; /* Adjust vertical padding */
+    color: rgba(255,255,255,.5); /* Adjust link color */
+    transition: color 0.2s; /* Add transition effect */
+    font-size: 10px; /* Adjust font size */
+    margin-right: 0;
+}
+
+footer.navbar-nav .nav-link:hover {
+    color: rgba(255,255,255,.75); /* Change link color on hover */
+}
+
+  .social-media-icons {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove any default padding */
+}
+
+.social-media-icons li {
+    display: inline-block; /* Display list items horizontally */
+}
+
+.social-media-icon {
+    width: 40px; /* Set the width of the images */
+    height: 40px; /* Set the height of the images */
+    margin-right: 12px; /* Adjust the spacing between icons */
+    border-radius: 10px; /* Set the border radius for rounded corners */
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+.social-media-icon:hover {
+    transform: scale(1.2); /* Scale up the size of the image on hover */
+}
+
+.horizontal-links {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove any default padding */
+}
+
+.horizontal-links li {
+    display: inline-block; /* Display list items horizontally */
+    margin-right: 15px; /* Adjust spacing between links */
+}
+
+.horizontal-links li:last-child {
+    margin-right: 0; /* Remove margin from the last item to prevent extra spacing */
+}
+
+{% endblock %}
+{% block title%} About Us{% endblock %}
+{% block body %}
+
+
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">InnovativeInteriors!</h1>
+      <p>The Furniture company are a UK based furniture manufacturer and retailer in the heart of Lancashire with industry experience 
+        spanning over 30 years. We use this experience to create high-quality furniture.</p>
+        
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Our History</h2>
+        <p>We’re a family business that’s been in the furniture manufacturing and retail industry for over 30 years, our commitment 
+            and attitude toward providing quality service has always been the same. Family is a big word for us. Once you become part 
+            of our community, our loyalty is unrivalled. We want to grow our relationship with you. When you invest with us, we invest
+             in you. 
+        </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Modern Technology</h2>
+        <p>We operate with the best machinery, and we’ve just invested. Exciting times are ahead as we’ve just made our process more 
+            efficient, which means we can do more in the same lead time. How? By investing in automated fabric cutting machine! In addition, 
+            we use top of the range band saws and CNC equipment.
+        </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>What Do We Provide?</h2>
+        <p>We provide upholstery manufacturing from start to finish. All our work is in-house, so we won’t pass you around any third parties. 
+            We build the framework and control everything from sewing, cutting and upholstery. All our designs are created by our inventive 
+            in-house design team, our collection is the result of a hard-working, talented team. We provide aftercare for all our products.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+
+
+
+
+{% endblock %}
+
+
