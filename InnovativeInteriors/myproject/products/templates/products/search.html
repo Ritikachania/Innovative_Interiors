@@ -1,17 +1,16 @@
-
 {% extends 'products/basic.html' %}
 
-{% block title%} Search Results - Innovative Interiors{% endblock %}
-
+{% block title%} Search Results - InnovativeIntteriors{% endblock %}
 
 {% block css %}
 
 body {
-    background-color: #f2f2f2; /* Grey background color */
+    background-image: url('/static/products/bg2.jpeg');
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
 }
 .navbar{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+    font-family: "Lucida Handwriting", cursive;
     font-size: 20px;
     background-color: darkgrey;
     color: white;
@@ -24,7 +23,6 @@ footer.navbar-brand {
     font-size: 24px;
     margin-right: auto;
 }
-
 
 
 footer.navbar-nav {
@@ -121,7 +119,6 @@ body .carousel-indicators{
 bottom: -40px;
 }
 .carousel-indicators li {
-
 
     background-color: #7270fc;
 }
@@ -230,7 +227,7 @@ function updatePopover(cart) {
         popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item][0] + '<br>';
         i = i + 1;
     }
-    popStr = popStr + "</div> <a href='/bakery/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>     "
+    popStr = popStr + "</div> <a href='/products/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>     "
     console.log(popStr);
     document.getElementById('popcart').setAttribute('data-content', popStr);
     $('#popcart').popover('show');
@@ -277,3 +274,5 @@ $('.divpr').on("click", "button.plus", function() {
 });
 </script>
 {% endblock %}
+
+
