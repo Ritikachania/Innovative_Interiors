@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+       {% block css %}
+
+.navbar{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+   
+    color: white;
+}
+footer.navbar {
+    padding: 20px 0; /* Adjust padding as needed */
+}
+
+footer.navbar-brand {
+    font-size: 24px;
+    margin-right: auto;
+}
+
+
+
+footer.navbar-nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 0;
+    margin-right: auto;
+   }
+
+footer.navbar-nav .nav-item {
+    margin-right: 30px; /* Adjust spacing between links */
+
+}
+.nav-link {
+    margin-right: 0px; /* Adjust the value as needed */
+    font-size: 19px;
+}
+
+footer.navbar-nav .nav-link a{
+    padding-top: 0.5rem; /* Adjust vertical padding */
+    padding-bottom: 0.5rem; /* Adjust vertical padding */
+    color: rgba(255,255,255,.5); /* Adjust link color */
+    transition: color 0.2s; /* Add transition effect */
+    font-size: 10px; /* Adjust font size */
+    margin-right: 0;
+}
+
+footer.navbar-nav .nav-link:hover {
+    color: rgba(255,255,255,.75); /* Change link color on hover */
+}
+
+  .social-media-icons {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove any default padding */
+}
+
+.social-media-icons li {
+    display: inline-block; /* Display list items horizontally */
+}
+
+.social-media-icon {
+    width: 40px; /* Set the width of the images */
+    height: 40px; /* Set the height of the images */
+    margin-right: 12px; /* Adjust the spacing between icons */
+    border-radius: 10px; /* Set the border radius for rounded corners */
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+.social-media-icon:hover {
+    transform: scale(1.2); /* Scale up the size of the image on hover */
+}
+
+.horizontal-links {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove any default padding */
+}
+
+.horizontal-links li {
+    display: inline-block; /* Display list items horizontally */
+    margin-right: 15px; /* Adjust spacing between links */
+}
+
+.horizontal-links li:last-child {
+    margin-right: 0; /* Remove margin from the last item to prevent extra spacing */
+}
+
+
+
+
+{% endblock %}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #7393B3">
+  <a class="navbar-brand" href="/"><img src="/static/products/logo1.png" alt="InnovativeInteriors" style="width: 130px; height: 80px;"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/products">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products/about/">About Us</a>
+            </li>
+
+        </ul>
+
+        <form method='get' action='/products/search/' class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background-color: #36454F; color:aliceblue">Search</button>
+
+        </form>
+       
+        </div>
+    </div>
+</nav>
+
+{% block body %} {% endblock %}
+
+<footer class="navbar navbar-expand-lg navbar-dark" style="background-color: #7393B3">
+  <div class="container">
+      <a class="navbar-brand" href="/"><img src="/static/products/logo1.png" alt="InnovativeInteriors" style="width: 130px; height: 80px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerSupportedContent" aria-controls="footerSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="footerSupportedContent">
+          <ul class="navbar-nav ml-auto ">
+              <li class="nav-item"><a class="nav-link" href="/products/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/products/about/">About Us</a></li>
+
+              
+          </ul>
+      </div>
+      <div class="col-md-6 text-right">
+            <ul class="list-unstyled social-media-icons" >
+              <li><a href="https://www.facebook.com"><img src="/static/products/facebooklogo.png" alt="Facebook" class="social-media-icon"></a></li>
+              <li><a href="https://twitter.com"><img src="/static/products/twiterlogo.png" alt="Twitter" class="social-media-icon"></a></li>
+              <li><a href="https://www.instagram.com"><img src="/static/products/instalogo.jpg" alt="Instagram" class="social-media-icon"></a></li>
+              <li><a href="https://www.linkedin.com"><img src="/static/products/linkedinlogo.png" alt="LinkedIn" class="social-media-icon"></a></li>
+            </ul>
+      </div>
+    </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{% block js %} {% endblock %}
+</body>
+</html>
