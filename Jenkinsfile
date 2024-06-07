@@ -6,6 +6,7 @@ pipeline {
         REGISTRY_CREDENTIALS = 'dockerhub-credentials-id'
         GIT_CREDENTIALS = 'github-ssh-key'
         DOCKER_HOST = 'unix:///var/run/docker.sock'
+        appDir = '' // Initialize the appDir variable
     }
 
  	stages {
@@ -19,11 +20,17 @@ pipeline {
                 sh 'ls -la'
             }
         }
+        stage('Set appDir') {
+            steps {
+                script {
+                    env.appDir = sh(script: '/home/ec2-user/Innovative_Interiors/InnovativeInteriors/app', returnStdout: true).trim()
+                }
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerfilePath = 'InnovativeInteriors/my-docker-image' // Corrected path to Dockerfile
-                    sh "docker build -t my_django_app  ${appDir}"
+                   sh "docker build -t my_django_app  ${appDir}"
                 }
             }
         }
