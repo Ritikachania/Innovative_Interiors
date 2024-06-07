@@ -8,7 +8,7 @@ pipeline {
         DOCKER_HOST = 'unix:///var/run/docker.sock'
     }
 
-    stages {
+ 	stages {
         stage('Clone Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/Ritikachania/Innovative_Interiors.git', credentialsId: 'github-ssh-key'
@@ -17,63 +17,56 @@ pipeline {
         stage('List Directory') {
             steps {
                 sh 'ls -la'
-                sh 'ls -la InnovativeInteriors'
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
-                    def appDir = '.' // Adjust this path if needed
-                    sh "docker build -t ${DOCKER_IMAGE} ${appDir}"
+                    def appDir = 'mywebapp' // Ensure this path is correct relative to the workspace
+                    sh "docker build -t my_django_app  ${appDir}"
                 }
             }
         }
         stage('Verify Files in Docker Container') {
             steps {
                 script {
-                    docker.image(DOCKER_IMAGE).inside {
+                    docker.image('my_django_app').inside {
                         sh 'ls -la /app'
                         sh 'ls -la /app/InnovativeInteriors'
                     }
                 }
             }
-        }
+        }        
         stage('Run Tests') {
             steps {
                 script {
-                    docker.image(DOCKER_IMAGE).inside {
-                        sh 'python /app/InnovativeInteriors/manage.py test'
-                    }
+                    // Update the path to match the location of manage.py within the container
+                    sh 'docker run --rm my_django_app python manage.py test'
                 }
             }
         }
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', REGISTRY_CREDENTIALS) {
-                        docker.image(DOCKER_IMAGE).push('latest')
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
+                        docker.image('my_django_app').push()
                     }
                 }
-            }
-            when {
-                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
             }
         }
         stage('Deploy') {
             steps {
-                sh './jenkins_deploy_prod_docker.sh'
-            }
-            when {
-                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+                script {
+                    sh 'docker-compose up -d'
+                }
             }
         }
     }
     post {
-        always {
-            echo 'Pipeline completed.'
-        }
         failure {
-            echo 'Pipeline failed. Check the logs for details.'
+            script {
+                echo 'Pipeline failed. Check the logs for details.'
+            }
         }
     }
 }
