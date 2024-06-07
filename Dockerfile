@@ -17,9 +17,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the entire project directory into the container
 COPY . .
 
-# Ensure the manage.py file is in the container's working directory
-# Adjust the path if necessary based on your project structure
-COPY manage.py .
 
 # Expose the port the app runs on (if applicable)
 # EXPOSE 8000
