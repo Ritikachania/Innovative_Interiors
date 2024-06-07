@@ -32,7 +32,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                  sh "docker build -t 'my_django_app' \"/var/lib/jenkins/workspace/Innovative_Interiors_CI_CD(1)/InnovativeInteriors/my-docker-image\""
+                  sh "docker build -t 'my_django_app' \"${env.WORKSPACE}/myproject\""
                 }
             }
         }
