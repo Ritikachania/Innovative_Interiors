@@ -40,8 +40,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    // Update the path to match the location of manage.py within the container
-                    sh 'docker run --rm my_django_app python manage.py test'
+                    docker.image('my_django_app').inside {
+                        sh 'python /app/InnovativeInteriors/manage.py test'
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
-                        docker.image('my_django_app').push()
+                        docker.image('my_django_app').push('latest')
                     }
                 }
             }
