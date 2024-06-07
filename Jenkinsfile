@@ -22,7 +22,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def appDir = 'mywebapp' // Ensure this path is correct relative to the workspace
+                    def dockerfilePath = 'InnovativeInteriors/my-docker-image' // Corrected path to Dockerfile
                     sh "docker build -t my_django_app  ${appDir}"
                 }
             }
