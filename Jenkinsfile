@@ -33,8 +33,8 @@ pipeline {
             steps {
                 script {
                     def appDir = 'InnovativeInteriors' // Path to your application directory
-                    // Assuming Dockerfile is in the root of the application directory
-                    sh "docker build -t my_django_app ./${appDir}"'"
+            // Assuming Dockerfile is in the root of the application directory
+            sh "docker build -t my_django_app ./${appDir}"
                 }
             }
         }
