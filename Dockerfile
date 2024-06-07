@@ -17,7 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the entire project directory into the container
 COPY .  /app/
 
-
+# Set the working directory to the location of manage.py
+WORKDIR /app/InnovativeInteriors/myproject
 
 
 # Expose the port the app runs on (if applicable)
