@@ -31,7 +31,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh "docker run --rm my_django_app python manage.py test"
+                    // Update the path to match the location of manage.py within the container
+                    sh 'docker run --rm my_django_app python manage.py test'
                 }
             }
         }
