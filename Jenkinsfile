@@ -32,7 +32,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                 docker build -t my_django_app /home/ec2-user/Innovative_Interiors
+                  sh 'docker build -t my_django_app /home/ec2-user/Innovative_Interiors'
                 }
             }
         }
