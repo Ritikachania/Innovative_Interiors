@@ -27,15 +27,7 @@ pipeline {
                 }
             }
         }
-	stage('Verify Files in Docker Container') {
-            steps {
-                script {
-                    docker.image('my_django_app').inside {
-                        sh 'ls -la /app/InnovativeInteriors/myproject'
-                    }
-                }
-            }
-        }
+	
         stage('Run Tests') {
             steps {
                 script {
