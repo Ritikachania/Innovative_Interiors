@@ -17,7 +17,8 @@ pipeline {
 	stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('my_django_app','./mywebapp')
+                    def appDir = 'mywebapp' // Update this path to your app directory
+                    sh "docker build -t my_django_app ${appDir}"
                 }
             }
         }
