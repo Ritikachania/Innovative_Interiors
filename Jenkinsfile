@@ -8,13 +8,12 @@ pipeline {
         DOCKER_HOST = 'unix:///var/run/docker.sock'
     }
 
-    stages {
+ 	stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', git url: 'https://github.com/Ritikachania/Innovative_Interiors.git', credentialsId: 'github-ssh-key'
+                git branch: 'main', url: 'https://github.com/Ritikachania/Innovative_Interiors.git', credentialsId: 'github-ssh-key'
             }
         }
-	}
         stage('List Directory') {
             steps {
                 sh 'ls -la'
@@ -28,6 +27,7 @@ pipeline {
                 }
             }
         }
+	
         stage('Run Tests') {
             steps {
                 script {
