@@ -42,6 +42,7 @@ pipeline {
                 script {
                     docker.image('my_django_app').inside {
                         sh 'python /app/InnovativeInteriors/manage.py test'
+                    }
                 }
             }
         }
@@ -71,4 +72,4 @@ pipeline {
         }
     }
 }
-}
+
