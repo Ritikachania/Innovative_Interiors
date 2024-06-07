@@ -40,7 +40,7 @@ pipeline {
        stage('Push to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
                         docker.image('my_django_app').push('latest')
                     }
                 }
