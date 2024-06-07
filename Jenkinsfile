@@ -10,11 +10,11 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git credentialsId: "${GIT_CREDENTIALS}", url: 'git@github.com:Ritikachania/Innovative_Interiors.git'
-            }
-        }
+                git url: 'https://github.com/Ritikachania/Innovative_Interiors.git', credentialsId: 'github-ssh-key'      
 
-        stage('Build Docker Image') {
+		}
+	}
+	stage('Build Docker Image') {
             steps {
                 script {
                     docker.build("${DOCKER_IMAGE}")
