@@ -32,12 +32,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                   // Get the realpath of the directory
+                    // Get the realpath of the directory
                     def appDir = sh(script: 'realpath InnovativeInteriors', returnStdout: true).trim()
                     echo "App directory path: ${appDir}"
                     
                     // Build Docker image using the realpath
-                    sh "docker build -t my_django_app ${appDir}"
+                    sh "docker build -t my_django_app '${appDir}'"
                 }
             }
         }
