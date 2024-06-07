@@ -17,7 +17,7 @@ pipeline {
 	stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('my_django_app')
+                    docker.build('my_django_app','mywebapp')
                 }
             }
         }
