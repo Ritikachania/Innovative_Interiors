@@ -5,6 +5,7 @@ pipeline {
         DOCKER_IMAGE = 'my_django_app'
         REGISTRY_CREDENTIALS = 'dockerhub-credentials'
         GIT_CREDENTIALS = 'github-ssh-key' // This should match the ID you used
+	DOCKER_HOST = 'unix:///var/run/docker.sock'
     }
 
     stages {
