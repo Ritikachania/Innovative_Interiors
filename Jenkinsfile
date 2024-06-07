@@ -27,48 +27,51 @@ pipeline {
                 }
             }
         }
-	
+	stage('Verify Files in Docker Container') {
+            steps {
+                script {
+                    docker.image('my_django_app').inside {
+                        sh 'ls -la /app/InnovativeInteriors/myproject'
+                    }
+                }
+            }
+        }
         stage('Run Tests') {
             steps {
                 script {
-                    // Ensure the correct working directory is used
-                    sh 'docker run --rm -w /app/InnovativeInteriors/myproject my_django_app python manage.py test'
+                    docker.image('my_django_app').inside {
+                        sh 'python /app/InnovativeInteriors/myproject/manage.py test'
+                    }
                 }
             }
         }
-        stage('Push to Docker Hub') {
-            when {
-                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
-            }
+       stage('Push to Docker Hub') {
             steps {
                 script {
-                    // Add your Docker Hub credentials and push logic here
-                    echo 'Pushing Docker image to Docker Hub...'
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
+                        docker.image('my_django_app').push('latest')
+                    }
                 }
+            }
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
             }
         }
         stage('Deploy') {
+            steps {
+                sh './jenkins_deploy_prod_docker.sh'
+            }
             when {
                 expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
-            }
-            steps {
-                script {
-                    // Add your deployment steps here
-                    echo 'Deploying application...'
-                }
             }
         }
     }
     post {
         always {
-            script {
-                echo 'Pipeline completed.'
-            }
+            echo 'Pipeline completed.'
         }
         failure {
-            script {
-                echo 'Pipeline failed. Check the logs for details.'
-            }
+            echo 'Pipeline failed. Check the logs for details.'
         }
     }
 }
