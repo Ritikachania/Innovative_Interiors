@@ -32,7 +32,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                  sh 'docker build -t my_django_app /var/lib/jenkins/workspace/Innovative_Interiors_CI_CD(1)/InnovativeInteriors'
+                   // Get the realpath of the directory
+                    def appDir = sh(script: 'realpath InnovativeInteriors', returnStdout: true).trim()
+                    echo "App directory path: ${appDir}"
+                    
+                    // Build Docker image using the realpath
+                    sh "docker build -t my_django_app ${appDir}"
                 }
             }
         }
