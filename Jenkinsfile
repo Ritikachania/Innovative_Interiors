@@ -14,6 +14,7 @@ pipeline {
                 git branch: 'main', git url: 'https://github.com/Ritikachania/Innovative_Interiors.git', credentialsId: 'github-ssh-key'
             }
         }
+	}
         stage('List Directory') {
             steps {
                 sh 'ls -la'
