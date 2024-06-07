@@ -6,8 +6,7 @@ pipeline {
         REGISTRY_CREDENTIALS = 'dockerhub-credentials-id'
         GIT_CREDENTIALS = 'github-ssh-key'
         DOCKER_HOST = 'unix:///var/run/docker.sock'
-        appDir = '' // Initialize the appDir variable
-    }
+          }
 
  	stages {
         stage('Clone Repository') {
@@ -25,7 +24,8 @@ pipeline {
                 script {
                     // Use realpath to get the absolute path of the app directory within Innovative_Interiors
                     env.appDir = sh(script: 'realpath InnovativeInteriors', returnStdout: true).trim()
-                    echo "App directory path: ${env.appDir}"
+                    echo "App directory path: ${appDir}"
+                    env.appDir = appDir // Set the environment variable
                 }
             }
         }
