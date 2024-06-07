@@ -17,7 +17,7 @@ pipeline {
 	stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${DOCKER_IMAGE}")
+                    docker.build('my_django_app')
                 }
             }
         }
@@ -31,8 +31,8 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('', "${REGISTRY_CREDENTIALS}") {
-                        docker.image("${DOCKER_IMAGE}").push()
+                    docker.withRegistry('https://index.docker.io/v1/','dockerhub-credentials-id') {
+                        docker.image('my_django_app').push()
                     }
                 }
             }
