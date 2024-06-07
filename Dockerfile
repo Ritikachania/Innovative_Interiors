@@ -1,5 +1,5 @@
 # Use an official Python runtime as the base image
-FROM python:3.11
+FROM python:3.8-slim
 
 # Set environment variables for Python
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -8,11 +8,18 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . .
+# Copy the requirements file into the container
+COPY requirements.txt requirements.txt
 
 # Install dependencies
-RUN pip install --no-cache-dir django
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire project directory into the container
+COPY . .
+
+# Ensure the manage.py file is in the container's working directory
+# Adjust the path if necessary based on your project structure
+COPY manage.py .
 
 # Expose the port the app runs on (if applicable)
 # EXPOSE 8000
