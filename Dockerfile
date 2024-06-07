@@ -1,29 +1,16 @@
-# Use an official Python runtime as the base image
 FROM python:3.8-slim
 
-# Set environment variables for Python
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the requirements file into the container
+# Copy the requirements file and install dependencies
 COPY requirements.txt /app/
-
-# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project directory into the container
-COPY .  /app/
+# Copy the entire project
+COPY . /app/
 
 # Set the working directory to the location of manage.py
 WORKDIR /app/InnovativeInteriors/myproject
 
-
-# Expose the port the app runs on (if applicable)
-# EXPOSE 8000
-
-# Command to run the application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
+# Ensure that the entrypoint or CMD is set if needed, depending on how you run your application
