@@ -56,9 +56,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                script {
-                    sh 'docker-compose up -d'
-                }
+                     sh './jenkins_deploy_prod_docker.sh'
+               }
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
             }
         }
     }
