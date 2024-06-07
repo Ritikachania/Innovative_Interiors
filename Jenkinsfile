@@ -20,10 +20,12 @@ pipeline {
                 sh 'ls -la'
             }
         }
-        stage('Set appDir') {
+         stage('Set appDir') {
             steps {
                 script {
-                    env.appDir = sh(script: '/home/ec2-user/Innovative_Interiors/InnovativeInteriors/app', returnStdout: true).trim()
+                    // Use realpath to get the absolute path of the app directory within Innovative_Interiors
+                    env.appDir = sh(script: 'realpath InnovativeInteriors', returnStdout: true).trim()
+                    echo "App directory path: ${env.appDir}"
                 }
             }
         }
