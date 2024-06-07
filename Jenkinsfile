@@ -31,7 +31,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh "docker run --rm (my_django_app)python manage.py test"
+                    sh "docker run --rm my_django_app python manage.py test"
                 }
             }
         }
